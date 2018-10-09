@@ -37,25 +37,35 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateTextView(boolean extended) {
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        String iso = tm.getNetworkCountryIso();
+        String country = tm.getNetworkCountryIso();
         String numeric = tm.getNetworkOperator();
         String name = tm.getNetworkOperatorName();
 
         TimeZone zone = TimeZone.getDefault();
         String version = TimeUtils.getTimeZoneDatabaseVersion();
 
-        String msg = "Welcome to " + name + "(" + numeric + ", " + iso + "), " + zone.getID() + "(" + version + ")";
+        //String msg = "Welcome to " + name + "(" + numeric + ", " + iso + "), " + zone.getID() + "(" + version + ")\n";
+
+        TextView tv = (TextView) findViewById(R.id.contentCountry);
+        tv.setText(country);
+
+        tv = (TextView) findViewById(R.id.contentZoneId);
+        tv.setText(zone.getID());
+
+        tv = (TextView) findViewById(R.id.contentZoneDesc);
+        tv.setText(zone.getDisplayName());
+
+        tv = (TextView) findViewById(R.id.contentVersion);
+        tv.setText(version);
 
         if (extended) {
-            ArrayList<TimeZone> zones = TimeZoneLookupHelper.getTimeZones(this, "us");
+            tv = (TextView) findViewById(R.id.contentZones);
+            ArrayList<TimeZone> zones = TimeZoneLookupHelper.getTimeZonesWithUniqueOffsets(this, country);
             if (zones != null) {
                 for (TimeZone z : zones) {
-                    msg += "\n" + z.getID() + " " + z.getDisplayName();
+                     tv.append(z.getID() + " " + z.getDisplayName() + "\n");
                 }
             }
         }
-
-        TextView tv = (TextView) findViewById(R.id.text_content);
-        tv.setText(msg);
     }
 }

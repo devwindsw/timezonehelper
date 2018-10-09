@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">TimeZoneHelper</string>
+    <string name="app_name">TimeZone Helper</string>
+    <string name="label_country">Country</string>
+    <string name="label_zone_id">Timezone</string>
+    <string name="label_zone_desc">Timezone Description</string>
+    <string name="label_version">TimeZone Data Version</string>
+    <string name="label_zone_list">List of Timezones</string>
+    <string name="content_unknown">Unknown</string>
 </resources>

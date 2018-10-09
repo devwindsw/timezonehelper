@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">시간대 정보 도우미</string>
+    <string name="label_country">국가</string>
+    <string name="label_zone_id">시간대</string>
+    <string name="label_zone_desc">시간대 설명</string>
+    <string name="label_version">시간대 정보 버전</string>
+    <string name="label_zone_list">시간대 목록</string>
+    <string name="content_unknown">미확인</string>
+</resources>

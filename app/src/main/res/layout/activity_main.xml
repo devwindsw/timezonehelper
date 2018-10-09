@@ -7,12 +7,144 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_content"
+        android:id="@+id/labelCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingTop="@dimen/padding_label_top"
+        android:paddingRight="@dimen/padding_label_left"
+        android:paddingBottom="@dimen/padding_label_bottom"
+        android:text="@string/label_country"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contentCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingRight="@dimen/padding_label_left"
+        android:text="@string/content_unknown"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelCountry" />
+
+    <View
+        android:id="@+id/dividerCountry"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@+id/contentCountry" />
+
+    <TextView
+        android:id="@+id/labelZoneId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingTop="@dimen/padding_label_top"
+        android:paddingRight="@dimen/padding_label_left"
+        android:paddingBottom="@dimen/padding_label_bottom"
+        android:text="@string/label_zone_id"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerCountry" />
+
+    <TextView
+        android:id="@+id/contentZoneId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingRight="@dimen/padding_label_left"
+        android:text="@string/content_unknown"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelZoneId" />
+
+    <View
+        android:id="@+id/dividerZoneId"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@+id/contentZoneId" />
+
+    <TextView
+        android:id="@+id/labelZoneDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingTop="@dimen/padding_label_top"
+        android:paddingRight="@dimen/padding_label_left"
+        android:paddingBottom="@dimen/padding_label_bottom"
+        android:text="@string/label_zone_desc"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerZoneId" />
+
+    <TextView
+        android:id="@+id/contentZoneDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingRight="@dimen/padding_label_left"
+        android:text="@string/content_unknown"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelZoneDesc" />
+
+    <View
+        android:id="@+id/dividerZoneDesc"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@+id/contentZoneDesc" />
+
+    <TextView
+        android:id="@+id/labelVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingTop="@dimen/padding_label_top"
+        android:paddingRight="@dimen/padding_label_left"
+        android:paddingBottom="@dimen/padding_label_bottom"
+        android:text="@string/label_version"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerZoneDesc" />
+
+    <TextView
+        android:id="@+id/contentVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingRight="@dimen/padding_label_left"
+        android:text="@string/content_unknown"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelVersion" />
+
+    <View
+        android:id="@+id/dividerVersion"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@+id/contentVersion" />
+
+    <TextView
+        android:id="@+id/labelZones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingTop="@dimen/padding_label_top"
+        android:paddingRight="@dimen/padding_label_left"
+        android:paddingBottom="@dimen/padding_label_bottom"
+        android:text="@string/label_zone_list"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerVersion" />
+
+    <TextView
+        android:id="@+id/contentZones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_label_left"
+        android:paddingRight="@dimen/padding_label_left"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelZones" />
 
 </android.support.constraint.ConstraintLayout>
