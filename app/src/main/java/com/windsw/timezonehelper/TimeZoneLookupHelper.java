@@ -26,15 +26,60 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.TimeZone;
 
 public class TimeZoneLookupHelper {
     public static final boolean DBG = true;
     public static final String TAG = "TZLookupHelper";
 
+    /** Cached results of getTineZones */
     private static final Object sLastLockObj = new Object();
     private static ArrayList<TimeZone> sLastZones = null;
     private static String sLastCountry = null;
+
+    /** Cached results of getTimeZonesWithUniqueOffsets */
+    private static final Object sLastUniqueLockObj = new Object();
+    private static ArrayList<TimeZone> sLastUniqueZoneOffsets = null;
+    private static String sLastUniqueCountry = null;
+
+    public static ArrayList<TimeZone> getTimeZonesWithUniqueOffsets(Context context, String country) {
+        synchronized(sLastUniqueLockObj) {
+            if ((country != null) && country.equals(sLastUniqueCountry)) {
+                if (DBG) {
+                    Log.d(TAG, "getTimeZonesWithUniqueOffsets(" +
+                            country + "): return cached version");
+                }
+                return sLastUniqueZoneOffsets;
+            }
+        }
+        Collection<TimeZone> zones = getTimeZones(context, country);
+        ArrayList<TimeZone> uniqueTimeZones = new ArrayList<TimeZone>();
+        for (TimeZone zone : zones) {
+            // See if we already have this offset,
+            // Using slow but space efficient and these are small.
+            boolean found = false;
+            for (int i = 0; i < uniqueTimeZones.size(); i++) {
+                if (uniqueTimeZones.get(i).getRawOffset() == zone.getRawOffset()) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found == false) {
+                if (DBG) {
+                    Log.d(TAG, "getTimeZonesWithUniqueOffsets: add unique offset=" +
+                            zone.getRawOffset() + " zone.getID=" + zone.getID());
+                }
+                uniqueTimeZones.add(zone);
+            }
+        }
+        synchronized(sLastUniqueLockObj) {
+            // Cache the last result
+            sLastUniqueZoneOffsets = uniqueTimeZones;
+            sLastUniqueCountry = country;
+            return sLastUniqueZoneOffsets;
+        }
+    }
 
     public static ArrayList<TimeZone> getTimeZones(Context context, String country) {
         synchronized (sLastLockObj) {
